@@ -25,6 +25,9 @@ baseurl: "/ts-jest" # the subpath of your site, e.g. /blog
 # twitter_username: jekyllrb
 # github_username:  jekyll
 
+source: ../docs_md
+destination: ../docs
+
 # Build settings
 markdown: kramdown
 # theme: minima
