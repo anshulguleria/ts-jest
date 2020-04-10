@@ -21,7 +21,18 @@ jobs:
       run: |
         sudo apt-get update -y
         sudo apt-get install -y plantuml
-        echo $(which plantuml)
+        
+    - uses: actions/setup-ruby@v1.0.0
+    
+    - name: setup bundler and install dependencies
+      run: |
+        gem install bundler
+        cd docs_md
+        bundle install
+    
+    - name: generate documentation
+      run: echo $PWD
+
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     #- uses: actions/checkout@v2
 
