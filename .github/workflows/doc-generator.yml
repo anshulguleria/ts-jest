@@ -29,11 +29,24 @@ jobs:
       - name: setup bundler and install dependencies
         run: |
           gem install bundler:1.17.3
-          cd docs_md
+          cd docs
           bundle install
     
+      - name: link documentation
+        run: git worktree add docs/_site gh-pages
+        
       - name: generate documentation
-        run: echo $PWD
+        run: |
+          cd docs
+          bundle exec jekyll build
+      
+      - name: push generated documentation
+        run: |
+          cd docs/_site
+          git config user.name "Doc Bot"
+          git config user.email noreply@github.com
+          git commit -m "[BOT] 🤖 updates doc. No humans needed."
+          git push
 
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     #- uses: actions/checkout@v2
