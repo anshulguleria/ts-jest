@@ -48,6 +48,7 @@ jobs:
           cd docs/_site
           git config user.name "Doc Bot"
           git config user.email noreply@github.com
+          git add .
           git commit -m "[BOT] 🤖 updates doc. No humans needed."
           git push
 
